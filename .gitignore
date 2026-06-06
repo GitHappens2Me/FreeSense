@@ -4,8 +4,9 @@ env/
 ENV/
 .venv/
 
+Images/
 *.png
-*.csv
 
-!skate_data.csv
-!nrf_log.txt
+*.csv
+!*.skate_data.csv
+!*.nrf_log.txt

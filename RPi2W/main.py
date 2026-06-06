@@ -85,6 +85,9 @@ while True:
     timestamp_ms = time.ticks_ms()
     
     try:
+        # TODO: Using quaternion and computing Euler in software later might be better
+        # For Conversion, see bno08x.py Line 775
+        qw, qx, qy, qz = bno.quaternion
         roll, pitch, yaw = bno.euler
         accel_x, accel_y, accel_z = bno.acc_linear 
         
@@ -104,7 +107,7 @@ while True:
             ble.gatts_notify(conn_handle, tx_handle, pkt3.encode())
         
         print(f"{timestamp_ms}: P={pitch:.1f} Y={yaw:.1f} R={roll:.1f} | A={accel_x:.2f},{accel_y:.2f},{accel_z:.2f} | Cal:{bno.calibration_status}")
-        
+        #print(f"Q:{qw},{qx},{qy},{qz} | {accel_x},{accel_y},{accel_z}")
     except Exception as e:
         print(f"Error: {e}")
         raise e

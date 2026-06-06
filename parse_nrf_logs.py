@@ -1,6 +1,9 @@
 """
 Reads NRF log files and converts them into skate data (csv)
 
+Defaults: 
+Input:  ./Data/nrf_log.txt
+Output: ./Data/skate_data.csv
 """
 
 import re
@@ -46,11 +49,11 @@ def parse_nrf_log(filename):
             ])
     
     # Write CSV
-    with open('skate_data.csv', 'w') as f:
+    with open('./Data/skate_data.csv', 'w') as f:
         f.write('timestamp,pitch,yaw,roll,accel_x,accel_y,accel_z\n')
         for row in readings:
             f.write(','.join(row) + '\n')
     
     print(f"Parsed {len(readings)} readings")
 
-parse_nrf_log('nrf_log.txt')
+parse_nrf_log('./Data/nrf_log.txt')
